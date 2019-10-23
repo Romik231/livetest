@@ -44,6 +44,6 @@ abstract class C_Controller
 	
 
 	public function __call($name, $params){
-        die('fvdsz');
+        die('Ошибка');
 	}
 }

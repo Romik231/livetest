@@ -2,7 +2,7 @@
 
 
 namespace models;
-//use PDO;
+use PDO;
 
 require '../config/config.php';
 
@@ -12,7 +12,11 @@ class Db
 
     public function __construct()
     {
-        $this->db = new \PDO('mysql:host=' . HOST . ';dbname=' . DB_NAME, USER, PASSWORD);
+        $opt = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ];
+        $this->db = new \PDO('mysql:host=' . HOST . ';dbname=' . DB_NAME, USER, PASSWORD, $opt);
     }
 
     /**
