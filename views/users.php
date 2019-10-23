@@ -9,7 +9,7 @@
 <?//=var_dump($city);?>
 
 <h3>Добавить пользователя</h3>
-<form action="" method="post" class="form" id="form_add">
+<form method="post" id="form_user" class="form" id="form_add">
     <label for="name">Имя</label>
     <input type="text" name="name" id="name" required="required">
     <label for="age">Возраст</label>
@@ -23,9 +23,10 @@
         <? endforeach;?>
     </select>
 
-    <button type="submit" id="btn-send" class="send">Добавить</button>
+    <button type="button" id="btn-send" class="send">Добавить</button>
 </form>
 
+<div id="result_form"></div>
 
 
 <div class="users">
@@ -36,7 +37,7 @@
             <td>Город</td>
         </tr>
         <?php foreach ($users as $key => $val):?>
-        <?=var_dump($val)?>
+<!--        --><?//=var_dump($_POST);?>
         <tr>
             <td><?=$val['name'];?></td>
             <td><?=$val['age'];?></td>
