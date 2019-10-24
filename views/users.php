@@ -1,12 +1,12 @@
 
 
-<?php //foreach ($text as $key => $value):?>
-<!---->
-<!--    -->
-<!---->
-<?// endforeach;?>
+<?php foreach ($city as $key => $value):?>
+<!--    --><?//=var_dump($value['name']);?>
 
-<?//=var_dump($city);?>
+
+<? endforeach;?>
+
+
 
 <h3>Добавить пользователя</h3>
 <form method="post" id="form_user" class="form" id="form_add">
@@ -36,12 +36,14 @@
             <td>Возраст</td>
             <td>Город</td>
         </tr>
-        <?php foreach ($users as $key => $val):?>
-<!--        --><?//=var_dump($_POST);?>
+        <?php foreach ($users as $key => $val):
+             if ($val['city'] == NULL):
+            $val['city'] = 'Город не выбран';?>
+            <?php endif;?>
         <tr>
-            <td><?=$val['name'];?></td>
-            <td><?=$val['age'];?></td>
-            <td><?=$val['city'];?></td>
+            <td class="column"><?=$val['name'];?></td>
+            <td class="column"><?=$val['age'];?></td>
+            <td class="city-column"><?=$val['city'];?></td>
         </tr>
         <?php endforeach;?>
     </table>

@@ -1,55 +1,38 @@
 $(document).ready(function () {
-    $("#btn-send").click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'http://livetest/public/index.php?c=page&act=users',
-            dataType: 'html',
-            data: $('#form_user'),
-            success: function (response) {
-
-
-
-                console.log(response);
+    $(".column").click(function (e) {
+        var t = e.target;
+        var elm_name = t.tagName;
+        if(elm_name == 'input'){
+            return false;
         }
+        var val = $(this).html();
+        var code = '<input type="text" id="edit" value="'+val+'" />';
+
+        console.log(code);
+        $(this).empty().append(code);
+        $('#edit').focus();
+        $('#edit').blur(function()	{	//устанавливаем обработчик
+            var val = $(this).val();
+            // console.log(val);
+            $(this).parent().empty().html(val);
         });
-
-
-        // $.post(
-        //     'http://livetest/public/index.php?c=page&act=users',
-        //     $("#form_add").serialize(),
-        //
-        //     function (msg) {
-        //         $("#result_form").html(msg);
-        //         // console.log(msg);
-        //     }
-        // );
-        // alert('форма успешно отправлена');
-        // return false;
     });
+
+    $('.city-column').click(function () {
+        var select = "<select><option value=></option></select>";
+        $(this).empty().append(select);
+    })
+
+        // $('')
+
+});
+
+//При нажатии на Enter убираем фокус
+$(window).keydown(function(event){
+    //ловим событие нажатия клавиши
+    if(event.keyCode == 13) {	//если это Enter
+        $('#edit').blur();	//снимаем фокус с поля ввода
+    }
 });
 
 
-
-
-//     $('#btn-send').click(
-//         function () {
-//             sendAjaxForm('#form_add', );
-//                 return false;
-//     });
-// });
-//
-// function sendAjaxForm(form_add) {
-//     $.ajax({
-//         url: 'http://livetest/public/index.php?c=page&act=users',
-//         type: 'POST',
-//         dataType: 'hmtl',
-//         success: function (response) {
-//             result = $.parseJSON(response)
-//             $('#result-form').html('имя'+result.name);
-//         },
-//         error: function (response) {
-//             $('#result-form').html('Ошибка');
-//
-//         }
-//     });
-// }

@@ -5,20 +5,16 @@ namespace models;
 
 use models\Db;
 
-//require 'Db.php';
 
 class Users extends Db
 {
+//получение всех городов
     public function getCities()
     {
         $result = $this->rows('select * from cities order by name');
         return $result;
     }
-
-    public function getCity(){
-
-    }
-
+//получение конкретного пользователя
     public function getUser(){
         $id = $_GET['id'];
         $params = [
@@ -28,12 +24,10 @@ class Users extends Db
         return $result;
     }
 
+    //получение пользователей с соответствующими городами
     public function getUsers()
     {
-        $params = [
-
-        ];
-
+//
         $sql = 'SELECT users.name, users.age, cities.name 
                 AS city FROM users 
                 LEFT OUTER JOIN cities ON users.city_id = cities.id;';
@@ -71,10 +65,5 @@ class Users extends Db
         }
     }
 
-    public function redirect($url)
-    {
-        header('location' . $url);
-        exit;
-    }
 
 }
