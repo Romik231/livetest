@@ -1,2 +1,5 @@
 <?php
-echo $_POST['name'];
+use models\Users;
+$ajax = new Users();
+var_dump($_POST);
+$ajax->addUser();

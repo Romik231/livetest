@@ -11,7 +11,7 @@ class Db
     protected $db;
 
     public function __construct()
-    {
+    {var_dump($_POST);
         $opt = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC

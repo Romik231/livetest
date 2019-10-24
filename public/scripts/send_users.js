@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    //Редактирование таблицы
     $(".column").click(function (e) {
         var t = e.target;
         var elm_name = t.tagName;
@@ -21,7 +23,23 @@ $(document).ready(function () {
     $('.city-column').click(function () {
         var select = "<select><option value=></option></select>";
         $(this).empty().append(select);
-    })
+    });
+
+    $('#form_user').submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: $(this).attr('method'),
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function (response) {
+
+                console.log(response);
+            }
+        });
+    });
+
 
         // $('')
 

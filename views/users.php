@@ -9,7 +9,7 @@
 
 
 <h3>Добавить пользователя</h3>
-<form method="post" id="form_user" class="form" id="form_add">
+<form method="post" action="http://livetest/public/index.php?c=page&act=users" id="form_user" class="form" id="form_add">
     <label for="name">Имя</label>
     <input type="text" name="name" id="name" required="required">
     <label for="age">Возраст</label>
@@ -23,7 +23,7 @@
         <? endforeach;?>
     </select>
 
-    <button type="button" id="btn-send" class="send">Добавить</button>
+    <input type="submit" id="btn-send" class="send" value="Добавить">
 </form>
 
 <div id="result_form"></div>
