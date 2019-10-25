@@ -2,10 +2,9 @@
 require 'Db.php';
 require 'Users.php';
 
+$update = new \models\Users();
 if(!empty($_POST)){
-    $update = new \models\Users();
     $update->updateUser();
 }
 
 
-//$content = $_POST['content'];

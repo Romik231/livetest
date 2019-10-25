@@ -42,8 +42,8 @@ class Users extends Db
     //Функция добавления пользователя в базу
     public function addUser()
     {
-        if (strlen($_POST['name']) > 30 or strlen($_POST['name']) < 3) {
-            echo 'Имя должно содержать от 3 до 30 символов';
+        if (strlen($_POST['name']) > 30 or strlen($_POST['name'] or $_POST['name'] == '' ) < 3) {
+            echo 'Имя должно содержать от 3 до 30 символов и не должно быть пустым';
             return false;
         }
         if ($_POST['age'] < 0 and !is_int($_POST['age'])) {
@@ -69,16 +69,27 @@ class Users extends Db
         }
     }
 
-    public function updateUser(){
+    public function updateUser()
+    {
+        var_dump($_POST);
         $id = trim(strip_tags($_POST['id']));
         $name = trim(strip_tags($_POST['content']));
-
         $params = [
             'id' => $id,
-            'name'=> $name,
+            'name' => $name,
         ];
-        $result = $this->query('update users set name=:name where id=:id', $params);
-        return $result;
+
+        if ($_POST['class'] == 'column_age') {
+            $age = $this->query('update users set age=:name where id=:id', $params);
+            return $age;
+        }else{
+            $result = $this->query('update users set name=:name where id=:id', $params);
+            return $result;
+        }
+
+
+
+
     }
 
 

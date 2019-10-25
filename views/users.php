@@ -37,11 +37,11 @@
             if ($val['city_name'] == NULL):
                 $val['city_name'] = 'Город не выбран'; ?>
             <?php endif; ?>
-            <tr id='<?= $val['user_id'] ?>'>
+            <tr id='<?= $val['user_id'] ;?>' class="row">
                 <td id='<?= $val['user_id'] ?>' contenteditable="true"
-                    class="column column_name"><?= $val['name']; ?></td>
+                    class="column_name"><?= $val['name']; ?></td>
                 <td id='<?= $val['user_id'] ?>' contenteditable="true"
-                    class="column column_age"><?= $val['age']; ?></td>
+                    class="column_age"><?= $val['age']; ?></td>
                 <td id='<?= $val['city_id'] ? $val['city_id'] : 'city_id' ?>' contenteditable="true"
                     class="city-column"><?= $val['city_name']; ?></td>
             </tr>
