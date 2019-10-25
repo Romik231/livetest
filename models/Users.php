@@ -14,8 +14,10 @@ class Users extends Db
         $result = $this->rows('select * from cities order by name');
         return $result;
     }
+
 //получение конкретного пользователя
-    public function getUser(){
+    public function getUser()
+    {
         $id = $_GET['id'];
         $params = [
             'id' => $id,
@@ -28,10 +30,12 @@ class Users extends Db
     public function getUsers()
     {
 //
-        $sql = 'SELECT users.name, users.age, cities.name 
-                AS city FROM users 
-                LEFT OUTER JOIN cities ON users.city_id = cities.id;';
+        $sql = 'SELECT users.id AS user_id, users.name, users.age, cities.name 
+                AS city_name, cities.id 
+                AS city_id FROM users 
+                LEFT OUTER JOIN cities ON users.city_id = cities.id';
         $result = $this->rows($sql);
+
         return $result;
     }
 
@@ -63,6 +67,18 @@ class Users extends Db
                 return true;
             }
         }
+    }
+
+    public function updateUser(){
+        $id = trim(strip_tags($_POST['id']));
+        $name = trim(strip_tags($_POST['content']));
+
+        $params = [
+            'id' => $id,
+            'name'=> $name,
+        ];
+        $result = $this->query('update users set name=:name where id=:id', $params);
+        return $result;
     }
 
 

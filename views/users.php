@@ -1,29 +1,25 @@
-
-
-<?php foreach ($city as $key => $value):?>
-<!--    --><?//=var_dump($value['name']);?>
-
-
-<? endforeach;?>
-
-
+<?php //foreach ($city as $key => $value):?>
+<!--<? ////=var_dump($value['name']);?>-->
+<!---->
+<? // endforeach;?>
+<?php var_dump($_POST);?>
 
 <h3>Добавить пользователя</h3>
-<form method="post" action="http://livetest/public/index.php?c=page&act=users" id="form_user" class="form" id="form_add">
+<form method="post" action="http://livetest/models/ajax.php" id="form_user" class="form" id="form_add">
     <label for="name">Имя</label>
     <input type="text" name="name" id="name" required="required">
     <label for="age">Возраст</label>
     <input type="text" name="age" id="age" required="required">
     <label for="city">Город</label>
-<!--    <input type="text" name="city" id="city" >-->
     <select name="city" id="city">
         <option value="Город не выбран">Город не выбран</option>
-        <?php foreach ($city as $key => $val):?>
-            <option value="<?=$val['id']?>"><?=$val['name']?></option>
-        <? endforeach;?>
+        <?php foreach ($city as $key => $val): ?>
+            <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
+        <?php endforeach; ?>
     </select>
 
     <input type="submit" id="btn-send" class="send" value="Добавить">
+
 </form>
 
 <div id="result_form"></div>
@@ -37,14 +33,18 @@
             <td>Город</td>
         </tr>
         <?php foreach ($users as $key => $val):
-             if ($val['city'] == NULL):
-            $val['city'] = 'Город не выбран';?>
-            <?php endif;?>
-        <tr>
-            <td class="column"><?=$val['name'];?></td>
-            <td class="column"><?=$val['age'];?></td>
-            <td class="city-column"><?=$val['city'];?></td>
-        </tr>
-        <?php endforeach;?>
+//            var_dump($val);
+            if ($val['city_name'] == NULL):
+                $val['city_name'] = 'Город не выбран'; ?>
+            <?php endif; ?>
+            <tr id='<?= $val['user_id'] ?>'>
+                <td id='<?= $val['user_id'] ?>' contenteditable="true"
+                    class="column column_name"><?= $val['name']; ?></td>
+                <td id='<?= $val['user_id'] ?>' contenteditable="true"
+                    class="column column_age"><?= $val['age']; ?></td>
+                <td id='<?= $val['city_id'] ? $val['city_id'] : 'city_id' ?>' contenteditable="true"
+                    class="city-column"><?= $val['city_name']; ?></td>
+            </tr>
+        <?php endforeach; ?>
     </table>
 </div>

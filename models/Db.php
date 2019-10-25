@@ -2,16 +2,18 @@
 
 
 namespace models;
+
 use PDO;
 
 require '../config/config.php';
 
 class Db
 {
-    protected $db;
+    public $db;
 
     public function __construct()
-    {var_dump($_POST);
+    {
+        var_dump($_POST);
         $opt = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -39,7 +41,8 @@ class Db
     }
 
     // Получение всех значениц из базы
-    public function rows($sql, $params = []){
+    public function rows($sql, $params = [])
+    {
         $result = $this->query($sql, $params);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
 
