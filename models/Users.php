@@ -42,7 +42,7 @@ class Users extends Db
     //Функция добавления пользователя в базу
     public function addUser()
     {
-        if (strlen($_POST['name']) > 30 or strlen($_POST['name'] or $_POST['name'] == '' ) < 3) {
+        if (strlen($_POST['name']) > 30 or strlen($_POST['name']) < 3 or $_POST['name'] == '') {
             echo 'Имя должно содержать от 3 до 30 символов и не должно быть пустым';
             return false;
         }
@@ -71,7 +71,6 @@ class Users extends Db
 
     public function updateUser()
     {
-        var_dump($_POST);
         $id = trim(strip_tags($_POST['id']));
         $name = trim(strip_tags($_POST['content']));
         $params = [

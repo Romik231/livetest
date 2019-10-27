@@ -7,8 +7,3 @@ $a = new \models\Users();
 $a->addUser();
 }
 
-
-//
-//print_r(json_encode($result));
-
-

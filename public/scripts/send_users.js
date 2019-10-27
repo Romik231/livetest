@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $('.city-column').click(function () {
-        var select = "<select><option value=>Город не выбран</option></select>";
-        $(this).empty().append(select);
-    });
 
     $('#form_user').submit(function (event) {
         event.preventDefault();
@@ -11,7 +7,8 @@ $(document).ready(function () {
             method: $(this).attr('method'),
             dataType: 'html',
             data: $('#form_user').serialize(),
-            success: function (data) {
+            success: function () {
+                alert('Данные сохранены');
                 // console.log(data);
                 // result = $.parseJSON(data);
             }

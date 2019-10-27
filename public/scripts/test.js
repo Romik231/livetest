@@ -25,7 +25,7 @@ $(document).ready(function () {
         .mousedown(function (e) {   //обрабатываем событие нажатие мышки
             e.stopPropagation();
             elementid = this.id;
-            elementclass = this.class;
+            elementclass = this.className;
             contentold[elementid] = $(this).html();  //текст до редактирования
             $(this).bind('keydown', function (e) {    //обработчик нажатия Escape
                 if (e.keyCode == 27) {
@@ -36,7 +36,7 @@ $(document).ready(function () {
         }).blur(function (event) {//обрабатываем событие потери фокуса
         var elementidsave = this.id;//id элемента потерявшего фокус
         var contentsave = $(this).html();//текст для сохранени
-        var elementclass = this.class;
+        var elementclass = this.className;
 
         event.stopImmediatePropagation();
         if (elementid === elementidsave) {
