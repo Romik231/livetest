@@ -5,14 +5,15 @@ header('Content-Type: application/json');
 $update = new \models\Users();
 if(!empty($_POST)){
     $update->updateUser();
+    exit;
 }
 
-$arr = [];
-$a = $city->getCities();
-
-foreach ($a as $key =>$value) {
-
-    array_push($arr,$value);
-}
-
-echo (json_encode($arr, JSON_UNESCAPED_UNICODE));
+//$arr = [];
+//$city = $update->getCities();
+//
+//foreach ($city as $key =>$value) {
+//
+//    array_push($arr,$value);
+//}
+//
+//echo (json_encode($arr, JSON_UNESCAPED_UNICODE));

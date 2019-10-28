@@ -8,9 +8,8 @@ $(document).ready(function () {
             dataType: 'html',
             data: $('#form_user').serialize(),
             success: function () {
-                alert('Данные сохранены');
+                // alert('Данные сохранены');
                 // console.log(data);
-                // result = $.parseJSON(data);
             }
         });
     });

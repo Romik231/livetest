@@ -40,7 +40,7 @@ class Db
         return $stmt;
     }
 
-    // Получение всех значениц из базы
+    // Получение всех значений из базы
     public function rows($sql, $params = [])
     {
         $result = $this->query($sql, $params);
